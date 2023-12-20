@@ -1,0 +1,2386 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.10.12 on win32)" generated="20231206 19:14:29.455" rpa="true" schemaversion="4">
+<suite id="s1" name="Tasks" source="c:\Robocorp\my-rsb-robot\tasks.robot">
+<test id="s1-t1" name="Insert the sales data for the week and export it as a PDF" line="11">
+<kw name="Open the intranet website">
+<kw name="Open Available Browser" library="RPA.Browser.Selenium">
+<arg>https://robotsparebinindustries.com/</arg>
+<doc>Attempts to open a browser on the user's device from a set of
+supported browsers. Automatically downloads a corresponding webdriver
+if none is already installed.</doc>
+<msg timestamp="20231206 19:15:04.417" level="INFO">Downloaded webdriver to: C:\Users\gerard.n.g.humarang\AppData\Local\robocorp\webdrivers\.wdm\drivers\chromedriver\win64\119.0.6045.105\chromedriver-win32/chromedriver.exe</msg>
+<msg timestamp="20231206 19:15:05.363" level="INFO">Webdriver version taken into use: ChromeDriver 119.0.6045.105 (38c72552c5e15ba9b3117c0967a0fd105072d7c6-refs/branch-heads/6045@{#1103})
+</msg>
+<msg timestamp="20231206 19:15:13.576" level="INFO">Targeted browser version: 119.0.6045</msg>
+<msg timestamp="20231206 19:15:13.577" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg timestamp="20231206 19:15:17.911" level="INFO">Created Chrome browser with arguments: --disable-dev-shm-usage --disable-web-security --allow-running-insecure-content --no-sandbox</msg>
+<msg timestamp="20231206 19:15:17.912" level="INFO" html="true">&lt;p&gt;Attempted combinations:&lt;/p&gt;&lt;div class="doc"&gt;&lt;table&gt;&lt;tr&gt;&lt;th&gt;Browser&lt;/th&gt;&lt;th&gt;Download&lt;/th&gt;&lt;th&gt;Error&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Chrome&lt;/td&gt;&lt;td&gt;False&lt;/td&gt;&lt;td&gt;Message: Webdriver executable 'chromedriver' is not in PATH (with disabled Selenium Manager)
+&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Chrome&lt;/td&gt;&lt;td&gt;True&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</msg>
+<msg timestamp="20231206 19:15:17.913" level="INFO">Opening url 'https://robotsparebinindustries.com/'</msg>
+<status status="PASS" starttime="20231206 19:14:36.554" endtime="20231206 19:15:18.837"/>
+</kw>
+<status status="PASS" starttime="20231206 19:14:36.553" endtime="20231206 19:15:18.838"/>
+</kw>
+<kw name="Log in">
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>username</arg>
+<arg>maria</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:18.860" level="INFO">Typing text 'maria' into text field 'username'.</msg>
+<status status="PASS" starttime="20231206 19:15:18.856" endtime="20231206 19:15:19.861"/>
+</kw>
+<kw name="Input Password" library="RPA.Browser.Selenium">
+<arg>password</arg>
+<arg>thoushallnotpass</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:19.864" level="INFO">Typing password into text field 'password'.</msg>
+<msg timestamp="20231206 19:15:19.986" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20231206 19:15:20.122" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20231206 19:15:19.862" endtime="20231206 19:15:20.123"/>
+</kw>
+<kw name="Submit Form" library="RPA.Browser.Selenium">
+<doc>Submits a form identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:20.125" level="INFO">Submitting form 'None'.</msg>
+<status status="PASS" starttime="20231206 19:15:20.124" endtime="20231206 19:15:20.242"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="RPA.Browser.Selenium">
+<arg>id:sales-form</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20231206 19:15:20.243" endtime="20231206 19:15:20.507"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:18.854" endtime="20231206 19:15:20.507"/>
+</kw>
+<kw name="Download the Excel file">
+<kw name="Download" library="RPA.HTTP">
+<arg>https://robotsparebinindustries.com/SalesData.xlsx</arg>
+<arg>overwrite=True</arg>
+<doc>An alias for the ``HTTP Get`` keyword.</doc>
+<msg timestamp="20231206 19:15:20.512" level="INFO">Creating a new HTTP session</msg>
+<msg timestamp="20231206 19:15:20.512" level="INFO">Creating Session using : alias=rpasession_alias.httpsrobotsparebinindustries.com, url=https://robotsparebinindustries.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20231206 19:15:20.510" endtime="20231206 19:15:22.702"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:20.509" endtime="20231206 19:15:22.703"/>
+</kw>
+<kw name="Fill the form using the data from the Excel file">
+<kw name="Open Workbook" library="RPA.Excel.Files">
+<arg>SalesData.xlsx</arg>
+<doc>Open an existing Excel workbook.</doc>
+<msg timestamp="20231206 19:15:22.832" level="INFO">Opened workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x00000173A229FD00&gt;</msg>
+<status status="PASS" starttime="20231206 19:15:22.707" endtime="20231206 19:15:22.833"/>
+</kw>
+<kw name="Read Worksheet As Table" library="RPA.Excel.Files">
+<var>${sales_reps}</var>
+<arg>header=True</arg>
+<doc>Read the contents of a worksheet into a Table container. Allows
+sorting/filtering/manipulating using the ``RPA.Tables`` library.</doc>
+<msg timestamp="20231206 19:15:22.842" level="INFO">Created table: Table(columns=['First Name', 'Last Name', 'Sales', 'Sales Target'], rows=50)</msg>
+<msg timestamp="20231206 19:15:22.844" level="INFO">${sales_reps} = Table(columns=['First Name', 'Last Name', 'Sales', 'Sales Target'], rows=50)</msg>
+<status status="PASS" starttime="20231206 19:15:22.835" endtime="20231206 19:15:22.845"/>
+</kw>
+<kw name="Close Workbook" library="RPA.Excel.Files">
+<doc>Close the active workbook.</doc>
+<msg timestamp="20231206 19:15:22.848" level="INFO">Closing workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x00000173A229FD00&gt;</msg>
+<status status="PASS" starttime="20231206 19:15:22.846" endtime="20231206 19:15:22.849"/>
+</kw>
+<for flavor="IN">
+<var>${sales_rep}</var>
+<value>@{sales_reps}</value>
+<iter>
+<var name="${sales_rep}">{'First Name': 'David', 'Last Name': 'Heazel', 'Sales': 80193, 'Sales Target': 30000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:22.857" level="INFO">Typing text 'David' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:22.855" endtime="20231206 19:15:23.170"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:23.174" level="INFO">Typing text 'Heazel' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:23.171" endtime="20231206 19:15:23.418"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:23.422" level="INFO">Typing text '80193' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:23.420" endtime="20231206 19:15:23.651"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:23.655" level="INFO">Selecting options from selection list 'salestarget' by value 30000.</msg>
+<status status="PASS" starttime="20231206 19:15:23.652" endtime="20231206 19:15:23.845"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:23.849" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:23.846" endtime="20231206 19:15:24.304"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:22.853" endtime="20231206 19:15:24.305"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:22.852" endtime="20231206 19:15:24.306"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Conte', 'Last Name': 'Mascetti', 'Sales': 141182, 'Sales Target': 35000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:24.313" level="INFO">Typing text 'Conte' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:24.310" endtime="20231206 19:15:24.530"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:24.535" level="INFO">Typing text 'Mascetti' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:24.531" endtime="20231206 19:15:24.765"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:24.768" level="INFO">Typing text '141182' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:24.766" endtime="20231206 19:15:24.974"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:24.977" level="INFO">Selecting options from selection list 'salestarget' by value 35000.</msg>
+<status status="PASS" starttime="20231206 19:15:24.974" endtime="20231206 19:15:25.126"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:25.128" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:25.126" endtime="20231206 19:15:25.345"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:24.308" endtime="20231206 19:15:25.347"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:24.307" endtime="20231206 19:15:25.347"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Dallon', 'Last Name': 'Seals', 'Sales': 61456, 'Sales Target': 15000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:25.355" level="INFO">Typing text 'Dallon' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:25.351" endtime="20231206 19:15:25.607"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:25.610" level="INFO">Typing text 'Seals' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:25.608" endtime="20231206 19:15:25.842"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:25.845" level="INFO">Typing text '61456' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:25.843" endtime="20231206 19:15:26.077"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:26.080" level="INFO">Selecting options from selection list 'salestarget' by value 15000.</msg>
+<status status="PASS" starttime="20231206 19:15:26.077" endtime="20231206 19:15:26.289"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:26.292" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:26.290" endtime="20231206 19:15:26.554"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:25.349" endtime="20231206 19:15:26.555"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:25.348" endtime="20231206 19:15:26.556"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Jocelyn', 'Last Name': 'Thomsson', 'Sales': 99354, 'Sales Target': 95000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:26.562" level="INFO">Typing text 'Jocelyn' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:26.560" endtime="20231206 19:15:26.819"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:26.823" level="INFO">Typing text 'Thomsson' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:26.820" endtime="20231206 19:15:27.009"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:27.013" level="INFO">Typing text '99354' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:27.010" endtime="20231206 19:15:27.179"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:27.182" level="INFO">Selecting options from selection list 'salestarget' by value 95000.</msg>
+<status status="PASS" starttime="20231206 19:15:27.180" endtime="20231206 19:15:27.311"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:27.315" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:27.312" endtime="20231206 19:15:27.521"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:26.558" endtime="20231206 19:15:27.522"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:26.557" endtime="20231206 19:15:27.523"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Yoko', 'Last Name': 'Flecknell', 'Sales': 139701, 'Sales Target': 50000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:27.529" level="INFO">Typing text 'Yoko' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:27.526" endtime="20231206 19:15:27.723"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:27.734" level="INFO">Typing text 'Flecknell' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:27.732" endtime="20231206 19:15:27.892"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:27.894" level="INFO">Typing text '139701' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:27.892" endtime="20231206 19:15:28.061"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:28.064" level="INFO">Selecting options from selection list 'salestarget' by value 50000.</msg>
+<status status="PASS" starttime="20231206 19:15:28.062" endtime="20231206 19:15:28.176"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:28.179" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:28.176" endtime="20231206 19:15:28.362"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:27.525" endtime="20231206 19:15:28.363"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:27.524" endtime="20231206 19:15:28.364"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Ninnette', 'Last Name': 'Heinssen', 'Sales': 63808, 'Sales Target': 25000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:28.372" level="INFO">Typing text 'Ninnette' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:28.368" endtime="20231206 19:15:28.592"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:28.595" level="INFO">Typing text 'Heinssen' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:28.593" endtime="20231206 19:15:28.760"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:28.763" level="INFO">Typing text '63808' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:28.761" endtime="20231206 19:15:28.927"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:28.931" level="INFO">Selecting options from selection list 'salestarget' by value 25000.</msg>
+<status status="PASS" starttime="20231206 19:15:28.928" endtime="20231206 19:15:29.046"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:29.050" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:29.047" endtime="20231206 19:15:29.254"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:28.367" endtime="20231206 19:15:29.255"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:28.365" endtime="20231206 19:15:29.256"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Ahmed', 'Last Name': 'Vasnetsov', 'Sales': 50211, 'Sales Target': 60000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:29.260" level="INFO">Typing text 'Ahmed' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:29.259" endtime="20231206 19:15:29.511"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:29.514" level="INFO">Typing text 'Vasnetsov' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:29.512" endtime="20231206 19:15:29.672"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:29.675" level="INFO">Typing text '50211' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:29.673" endtime="20231206 19:15:29.833"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:29.836" level="INFO">Selecting options from selection list 'salestarget' by value 60000.</msg>
+<status status="PASS" starttime="20231206 19:15:29.834" endtime="20231206 19:15:29.951"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:29.954" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:29.952" endtime="20231206 19:15:30.201"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:29.258" endtime="20231206 19:15:30.201"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:29.257" endtime="20231206 19:15:30.202"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Pearline', 'Last Name': 'Fenton', 'Sales': 78556, 'Sales Target': 35000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:30.207" level="INFO">Typing text 'Pearline' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:30.205" endtime="20231206 19:15:30.429"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:30.434" level="INFO">Typing text 'Fenton' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:30.430" endtime="20231206 19:15:30.587"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:30.590" level="INFO">Typing text '78556' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:30.588" endtime="20231206 19:15:30.753"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:30.757" level="INFO">Selecting options from selection list 'salestarget' by value 35000.</msg>
+<status status="PASS" starttime="20231206 19:15:30.754" endtime="20231206 19:15:30.862"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:30.864" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:30.863" endtime="20231206 19:15:31.204"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:30.203" endtime="20231206 19:15:31.204"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:30.203" endtime="20231206 19:15:31.205"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Lelah', 'Last Name': 'Yewdale', 'Sales': 122695, 'Sales Target': 100000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:31.210" level="INFO">Typing text 'Lelah' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:31.208" endtime="20231206 19:15:31.401"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:31.403" level="INFO">Typing text 'Yewdale' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:31.401" endtime="20231206 19:15:31.557"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:31.559" level="INFO">Typing text '122695' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:31.557" endtime="20231206 19:15:31.721"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:31.724" level="INFO">Selecting options from selection list 'salestarget' by value 100000.</msg>
+<status status="PASS" starttime="20231206 19:15:31.722" endtime="20231206 19:15:31.848"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:31.852" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:31.849" endtime="20231206 19:15:32.037"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:31.206" endtime="20231206 19:15:32.038"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:31.206" endtime="20231206 19:15:32.038"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Belinda', 'Last Name': 'Blumenthal', 'Sales': 115410, 'Sales Target': 70000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:32.043" level="INFO">Typing text 'Belinda' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:32.041" endtime="20231206 19:15:32.231"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:32.234" level="INFO">Typing text 'Blumenthal' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:32.232" endtime="20231206 19:15:32.395"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:32.397" level="INFO">Typing text '115410' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:32.395" endtime="20231206 19:15:32.560"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:32.563" level="INFO">Selecting options from selection list 'salestarget' by value 70000.</msg>
+<status status="PASS" starttime="20231206 19:15:32.561" endtime="20231206 19:15:32.683"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:32.685" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:32.684" endtime="20231206 19:15:32.898"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:32.040" endtime="20231206 19:15:32.899"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:32.039" endtime="20231206 19:15:32.900"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Antoni', 'Last Name': 'Degoe', 'Sales': 106991, 'Sales Target': 75000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:32.917" level="INFO">Typing text 'Antoni' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:32.908" endtime="20231206 19:15:33.086"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:33.089" level="INFO">Typing text 'Degoe' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:33.087" endtime="20231206 19:15:33.210"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:33.213" level="INFO">Typing text '106991' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:33.211" endtime="20231206 19:15:33.352"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:33.353" level="INFO">Selecting options from selection list 'salestarget' by value 75000.</msg>
+<status status="PASS" starttime="20231206 19:15:33.353" endtime="20231206 19:15:33.453"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:33.456" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:33.453" endtime="20231206 19:15:33.655"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:32.905" endtime="20231206 19:15:33.657"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:32.903" endtime="20231206 19:15:33.657"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Donnamarie', 'Last Name': 'Watts', 'Sales': 25924, 'Sales Target': 85000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:33.671" level="INFO">Typing text 'Donnamarie' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:33.666" endtime="20231206 19:15:33.857"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:33.859" level="INFO">Typing text 'Watts' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:33.858" endtime="20231206 19:15:33.986"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:33.987" level="INFO">Typing text '25924' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:33.986" endtime="20231206 19:15:34.108"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:34.110" level="INFO">Selecting options from selection list 'salestarget' by value 85000.</msg>
+<status status="PASS" starttime="20231206 19:15:34.109" endtime="20231206 19:15:34.205"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:34.208" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:34.206" endtime="20231206 19:15:34.374"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:33.661" endtime="20231206 19:15:34.375"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:33.659" endtime="20231206 19:15:34.375"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Anabella', 'Last Name': 'Blindermann', 'Sales': 43564, 'Sales Target': 85000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:34.382" level="INFO">Typing text 'Anabella' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:34.378" endtime="20231206 19:15:34.555"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:34.557" level="INFO">Typing text 'Blindermann' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:34.556" endtime="20231206 19:15:34.716"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:34.717" level="INFO">Typing text '43564' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:34.717" endtime="20231206 19:15:34.836"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:34.837" level="INFO">Selecting options from selection list 'salestarget' by value 85000.</msg>
+<status status="PASS" starttime="20231206 19:15:34.836" endtime="20231206 19:15:34.915"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:34.916" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:34.915" endtime="20231206 19:15:35.250"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:34.377" endtime="20231206 19:15:35.252"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:34.376" endtime="20231206 19:15:35.254"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Fred', 'Last Name': 'Mengoni', 'Sales': 131725, 'Sales Target': 5000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:35.269" level="INFO">Typing text 'Fred' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:35.266" endtime="20231206 19:15:35.409"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:35.410" level="INFO">Typing text 'Mengoni' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:35.409" endtime="20231206 19:15:35.521"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:35.522" level="INFO">Typing text '131725' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:35.522" endtime="20231206 19:15:35.644"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:35.647" level="INFO">Selecting options from selection list 'salestarget' by value 5000.</msg>
+<status status="PASS" starttime="20231206 19:15:35.645" endtime="20231206 19:15:35.701"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:35.702" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:35.701" endtime="20231206 19:15:35.906"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:35.261" endtime="20231206 19:15:35.907"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:35.257" endtime="20231206 19:15:35.907"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Nathanil', 'Last Name': 'Bragg', 'Sales': 100336, 'Sales Target': 35000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:35.909" level="INFO">Typing text 'Nathanil' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:35.908" endtime="20231206 19:15:36.051"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:36.052" level="INFO">Typing text 'Bragg' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:36.051" endtime="20231206 19:15:36.174"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:36.175" level="INFO">Typing text '100336' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:36.174" endtime="20231206 19:15:36.305"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:36.307" level="INFO">Selecting options from selection list 'salestarget' by value 35000.</msg>
+<status status="PASS" starttime="20231206 19:15:36.306" endtime="20231206 19:15:36.398"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:36.400" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:36.398" endtime="20231206 19:15:36.575"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:35.907" endtime="20231206 19:15:36.576"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:35.907" endtime="20231206 19:15:36.579"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Casar', 'Last Name': 'Kubek', 'Sales': 143750, 'Sales Target': 100000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:36.593" level="INFO">Typing text 'Casar' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:36.588" endtime="20231206 19:15:36.775"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:36.778" level="INFO">Typing text 'Kubek' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:36.776" endtime="20231206 19:15:36.899"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:36.901" level="INFO">Typing text '143750' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:36.900" endtime="20231206 19:15:37.042"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:37.044" level="INFO">Selecting options from selection list 'salestarget' by value 100000.</msg>
+<status status="PASS" starttime="20231206 19:15:37.042" endtime="20231206 19:15:37.137"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:37.139" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:37.137" endtime="20231206 19:15:37.312"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:36.585" endtime="20231206 19:15:37.313"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:36.582" endtime="20231206 19:15:37.314"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Myrtle', 'Last Name': 'Puddle', 'Sales': 22729, 'Sales Target': 10000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:37.320" level="INFO">Typing text 'Myrtle' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:37.318" endtime="20231206 19:15:37.547"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:37.551" level="INFO">Typing text 'Puddle' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:37.548" endtime="20231206 19:15:37.731"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:37.734" level="INFO">Typing text '22729' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:37.732" endtime="20231206 19:15:37.960"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:37.963" level="INFO">Selecting options from selection list 'salestarget' by value 10000.</msg>
+<status status="PASS" starttime="20231206 19:15:37.962" endtime="20231206 19:15:38.183"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:38.185" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:38.184" endtime="20231206 19:15:38.444"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:37.317" endtime="20231206 19:15:38.445"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:37.316" endtime="20231206 19:15:38.446"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Devi', 'Last Name': 'Oag', 'Sales': 140919, 'Sales Target': 10000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:38.455" level="INFO">Typing text 'Devi' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:38.450" endtime="20231206 19:15:38.766"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:38.769" level="INFO">Typing text 'Oag' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:38.768" endtime="20231206 19:15:39.008"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:39.011" level="INFO">Typing text '140919' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:39.009" endtime="20231206 19:15:39.314"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:39.319" level="INFO">Selecting options from selection list 'salestarget' by value 10000.</msg>
+<status status="PASS" starttime="20231206 19:15:39.315" endtime="20231206 19:15:39.455"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:39.459" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:39.456" endtime="20231206 19:15:39.740"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:38.447" endtime="20231206 19:15:39.741"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:38.447" endtime="20231206 19:15:39.741"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Emyle', 'Last Name': "O'Driscole", 'Sales': 70981, 'Sales Target': 10000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:39.749" level="INFO">Typing text 'Emyle' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:39.746" endtime="20231206 19:15:40.134"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:40.138" level="INFO">Typing text 'O'Driscole' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:40.135" endtime="20231206 19:15:40.404"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:40.407" level="INFO">Typing text '70981' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:40.405" endtime="20231206 19:15:40.652"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:40.656" level="INFO">Selecting options from selection list 'salestarget' by value 10000.</msg>
+<status status="PASS" starttime="20231206 19:15:40.653" endtime="20231206 19:15:40.840"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:40.845" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:40.842" endtime="20231206 19:15:41.310"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:39.743" endtime="20231206 19:15:41.310"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:39.742" endtime="20231206 19:15:41.311"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Mickie', 'Last Name': 'Linbohm', 'Sales': 80516, 'Sales Target': 10000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:41.318" level="INFO">Typing text 'Mickie' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:41.315" endtime="20231206 19:15:41.509"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:41.513" level="INFO">Typing text 'Linbohm' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:41.511" endtime="20231206 19:15:41.686"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:41.688" level="INFO">Typing text '80516' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:41.687" endtime="20231206 19:15:41.859"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:41.861" level="INFO">Selecting options from selection list 'salestarget' by value 10000.</msg>
+<status status="PASS" starttime="20231206 19:15:41.859" endtime="20231206 19:15:41.954"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:41.956" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:41.954" endtime="20231206 19:15:42.137"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:41.313" endtime="20231206 19:15:42.138"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:41.312" endtime="20231206 19:15:42.139"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Isaac', 'Last Name': 'Asimov', 'Sales': 118852, 'Sales Target': 65000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:42.144" level="INFO">Typing text 'Isaac' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:42.141" endtime="20231206 19:15:42.324"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:42.325" level="INFO">Typing text 'Asimov' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:42.324" endtime="20231206 19:15:42.455"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:42.456" level="INFO">Typing text '118852' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:42.455" endtime="20231206 19:15:42.607"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:42.610" level="INFO">Selecting options from selection list 'salestarget' by value 65000.</msg>
+<status status="PASS" starttime="20231206 19:15:42.608" endtime="20231206 19:15:42.704"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:42.707" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:42.706" endtime="20231206 19:15:42.875"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:42.140" endtime="20231206 19:15:42.875"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:42.139" endtime="20231206 19:15:42.876"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Florence', 'Last Name': 'Mundow', 'Sales': 122953, 'Sales Target': 10000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:42.882" level="INFO">Typing text 'Florence' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:42.878" endtime="20231206 19:15:43.099"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:43.102" level="INFO">Typing text 'Mundow' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:43.099" endtime="20231206 19:15:43.231"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:43.234" level="INFO">Typing text '122953' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:43.232" endtime="20231206 19:15:43.361"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:43.364" level="INFO">Selecting options from selection list 'salestarget' by value 10000.</msg>
+<status status="PASS" starttime="20231206 19:15:43.362" endtime="20231206 19:15:43.453"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:43.454" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:43.453" endtime="20231206 19:15:43.626"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:42.877" endtime="20231206 19:15:43.627"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:42.876" endtime="20231206 19:15:43.628"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Mahalia', 'Last Name': 'Goodee', 'Sales': 46997, 'Sales Target': 45000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:43.634" level="INFO">Typing text 'Mahalia' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:43.632" endtime="20231206 19:15:43.899"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:43.902" level="INFO">Typing text 'Goodee' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:43.900" endtime="20231206 19:15:44.083"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:44.087" level="INFO">Typing text '46997' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:44.084" endtime="20231206 19:15:44.267"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:44.270" level="INFO">Selecting options from selection list 'salestarget' by value 45000.</msg>
+<status status="PASS" starttime="20231206 19:15:44.268" endtime="20231206 19:15:44.407"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:44.411" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:44.408" endtime="20231206 19:15:44.623"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:43.630" endtime="20231206 19:15:44.624"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:43.629" endtime="20231206 19:15:44.625"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Christy', 'Last Name': 'Iwaszkiewicz', 'Sales': 91465, 'Sales Target': 100000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:44.634" level="INFO">Typing text 'Christy' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:44.630" endtime="20231206 19:15:44.923"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:44.926" level="INFO">Typing text 'Iwaszkiewicz' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:44.924" endtime="20231206 19:15:45.123"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:45.126" level="INFO">Typing text '91465' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:45.124" endtime="20231206 19:15:45.318"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:45.321" level="INFO">Selecting options from selection list 'salestarget' by value 100000.</msg>
+<status status="PASS" starttime="20231206 19:15:45.319" endtime="20231206 19:15:45.450"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:45.453" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:45.451" endtime="20231206 19:15:45.715"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:44.628" endtime="20231206 19:15:45.716"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:44.627" endtime="20231206 19:15:45.717"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Madelyn', 'Last Name': 'Sire', 'Sales': 66825, 'Sales Target': 60000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:45.721" level="INFO">Typing text 'Madelyn' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:45.719" endtime="20231206 19:15:45.905"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:45.906" level="INFO">Typing text 'Sire' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:45.905" endtime="20231206 19:15:46.037"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:46.040" level="INFO">Typing text '66825' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:46.038" endtime="20231206 19:15:46.183"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:46.185" level="INFO">Selecting options from selection list 'salestarget' by value 60000.</msg>
+<status status="PASS" starttime="20231206 19:15:46.184" endtime="20231206 19:15:46.274"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:46.275" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:46.274" endtime="20231206 19:15:46.453"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:45.718" endtime="20231206 19:15:46.453"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:45.717" endtime="20231206 19:15:46.454"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Thurstan', 'Last Name': 'Karus', 'Sales': 131244, 'Sales Target': 50000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:46.459" level="INFO">Typing text 'Thurstan' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:46.457" endtime="20231206 19:15:46.661"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:46.664" level="INFO">Typing text 'Karus' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:46.662" endtime="20231206 19:15:46.867"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:46.867" level="INFO">Typing text '131244' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:46.867" endtime="20231206 19:15:47.005"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:47.007" level="INFO">Selecting options from selection list 'salestarget' by value 50000.</msg>
+<status status="PASS" starttime="20231206 19:15:47.005" endtime="20231206 19:15:47.098"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:47.101" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:47.099" endtime="20231206 19:15:47.274"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:46.456" endtime="20231206 19:15:47.274"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:46.455" endtime="20231206 19:15:47.275"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Bibi', 'Last Name': 'Rosita', 'Sales': 94131, 'Sales Target': 30000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:47.282" level="INFO">Typing text 'Bibi' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:47.278" endtime="20231206 19:15:47.457"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:47.460" level="INFO">Typing text 'Rosita' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:47.459" endtime="20231206 19:15:47.586"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:47.587" level="INFO">Typing text '94131' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:47.586" endtime="20231206 19:15:47.699"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:47.701" level="INFO">Selecting options from selection list 'salestarget' by value 30000.</msg>
+<status status="PASS" starttime="20231206 19:15:47.700" endtime="20231206 19:15:47.784"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:47.786" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:47.785" endtime="20231206 19:15:47.958"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:47.277" endtime="20231206 19:15:47.959"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:47.276" endtime="20231206 19:15:47.959"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Abbe', 'Last Name': 'Aldcorn', 'Sales': 97489, 'Sales Target': 60000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:47.968" level="INFO">Typing text 'Abbe' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:47.964" endtime="20231206 19:15:48.127"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:48.131" level="INFO">Typing text 'Aldcorn' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:48.128" endtime="20231206 19:15:48.253"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:48.254" level="INFO">Typing text '97489' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:48.253" endtime="20231206 19:15:48.372"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:48.373" level="INFO">Selecting options from selection list 'salestarget' by value 60000.</msg>
+<status status="PASS" starttime="20231206 19:15:48.372" endtime="20231206 19:15:48.456"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:48.457" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:48.456" endtime="20231206 19:15:48.650"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:47.962" endtime="20231206 19:15:48.653"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:47.960" endtime="20231206 19:15:48.654"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Ariadne', 'Last Name': 'Kiessel', 'Sales': 86637, 'Sales Target': 70000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:48.663" level="INFO">Typing text 'Ariadne' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:48.659" endtime="20231206 19:15:48.831"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:48.833" level="INFO">Typing text 'Kiessel' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:48.832" endtime="20231206 19:15:48.958"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:48.960" level="INFO">Typing text '86637' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:48.958" endtime="20231206 19:15:49.080"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:49.081" level="INFO">Selecting options from selection list 'salestarget' by value 70000.</msg>
+<status status="PASS" starttime="20231206 19:15:49.080" endtime="20231206 19:15:49.168"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:49.169" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:49.169" endtime="20231206 19:15:49.336"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:48.658" endtime="20231206 19:15:49.336"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:48.656" endtime="20231206 19:15:49.338"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Tiffany', 'Last Name': 'Emerine', 'Sales': 124313, 'Sales Target': 50000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:49.345" level="INFO">Typing text 'Tiffany' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:49.341" endtime="20231206 19:15:49.535"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:49.536" level="INFO">Typing text 'Emerine' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:49.536" endtime="20231206 19:15:49.644"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:49.646" level="INFO">Typing text '124313' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:49.645" endtime="20231206 19:15:49.760"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:49.763" level="INFO">Selecting options from selection list 'salestarget' by value 50000.</msg>
+<status status="PASS" starttime="20231206 19:15:49.762" endtime="20231206 19:15:49.854"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:49.857" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:49.856" endtime="20231206 19:15:50.074"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:49.339" endtime="20231206 19:15:50.078"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:49.338" endtime="20231206 19:15:50.079"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Jelene', 'Last Name': 'Pridden', 'Sales': 91489, 'Sales Target': 35000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:50.089" level="INFO">Typing text 'Jelene' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:50.086" endtime="20231206 19:15:50.271"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:50.274" level="INFO">Typing text 'Pridden' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:50.273" endtime="20231206 19:15:50.417"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:50.419" level="INFO">Typing text '91489' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:50.417" endtime="20231206 19:15:50.551"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:50.552" level="INFO">Selecting options from selection list 'salestarget' by value 35000.</msg>
+<status status="PASS" starttime="20231206 19:15:50.551" endtime="20231206 19:15:50.647"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:50.649" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:50.648" endtime="20231206 19:15:51.028"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:50.083" endtime="20231206 19:15:51.028"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:50.081" endtime="20231206 19:15:51.029"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Claus', 'Last Name': 'Bawcock', 'Sales': 140602, 'Sales Target': 25000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:51.033" level="INFO">Typing text 'Claus' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:51.030" endtime="20231206 19:15:51.185"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:51.188" level="INFO">Typing text 'Bawcock' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:51.186" endtime="20231206 19:15:51.318"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:51.320" level="INFO">Typing text '140602' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:51.319" endtime="20231206 19:15:51.463"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:51.466" level="INFO">Selecting options from selection list 'salestarget' by value 25000.</msg>
+<status status="PASS" starttime="20231206 19:15:51.464" endtime="20231206 19:15:51.552"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:51.554" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:51.552" endtime="20231206 19:15:51.726"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:51.029" endtime="20231206 19:15:51.727"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:51.029" endtime="20231206 19:15:51.728"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Ameline', 'Last Name': 'Olivello', 'Sales': 60101, 'Sales Target': 80000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:51.736" level="INFO">Typing text 'Ameline' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:51.732" endtime="20231206 19:15:51.930"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:51.934" level="INFO">Typing text 'Olivello' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:51.932" endtime="20231206 19:15:52.073"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:52.074" level="INFO">Typing text '60101' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:52.073" endtime="20231206 19:15:52.231"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:52.235" level="INFO">Selecting options from selection list 'salestarget' by value 80000.</msg>
+<status status="PASS" starttime="20231206 19:15:52.232" endtime="20231206 19:15:52.339"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:52.342" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:52.340" endtime="20231206 19:15:52.520"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:51.730" endtime="20231206 19:15:52.521"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:51.728" endtime="20231206 19:15:52.521"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Alikee', 'Last Name': 'Kohtler', 'Sales': 141102, 'Sales Target': 15000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:52.525" level="INFO">Typing text 'Alikee' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:52.523" endtime="20231206 19:15:52.728"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:52.731" level="INFO">Typing text 'Kohtler' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:52.729" endtime="20231206 19:15:52.880"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:52.883" level="INFO">Typing text '141102' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:52.881" endtime="20231206 19:15:53.027"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:53.030" level="INFO">Selecting options from selection list 'salestarget' by value 15000.</msg>
+<status status="PASS" starttime="20231206 19:15:53.028" endtime="20231206 19:15:53.121"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:53.123" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:53.122" endtime="20231206 19:15:53.307"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:52.522" endtime="20231206 19:15:53.308"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:52.522" endtime="20231206 19:15:53.308"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Cathleen', 'Last Name': 'Tinklin', 'Sales': 113898, 'Sales Target': 35000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:53.314" level="INFO">Typing text 'Cathleen' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:53.312" endtime="20231206 19:15:53.541"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:53.543" level="INFO">Typing text 'Tinklin' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:53.541" endtime="20231206 19:15:53.697"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:53.700" level="INFO">Typing text '113898' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:53.698" endtime="20231206 19:15:53.894"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:53.897" level="INFO">Selecting options from selection list 'salestarget' by value 35000.</msg>
+<status status="PASS" starttime="20231206 19:15:53.895" endtime="20231206 19:15:53.994"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:53.996" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:53.994" endtime="20231206 19:15:54.184"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:53.310" endtime="20231206 19:15:54.185"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:53.309" endtime="20231206 19:15:54.185"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Flossie', 'Last Name': 'Gurr', 'Sales': 111068, 'Sales Target': 85000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:54.190" level="INFO">Typing text 'Flossie' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:54.188" endtime="20231206 19:15:54.397"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:54.401" level="INFO">Typing text 'Gurr' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:54.399" endtime="20231206 19:15:54.538"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:54.540" level="INFO">Typing text '111068' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:54.539" endtime="20231206 19:15:54.690"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:54.692" level="INFO">Selecting options from selection list 'salestarget' by value 85000.</msg>
+<status status="PASS" starttime="20231206 19:15:54.690" endtime="20231206 19:15:54.792"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:54.794" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:54.792" endtime="20231206 19:15:54.985"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:54.187" endtime="20231206 19:15:54.986"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:54.186" endtime="20231206 19:15:54.986"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Milena', 'Last Name': 'Gudeman', 'Sales': 24287, 'Sales Target': 45000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:54.991" level="INFO">Typing text 'Milena' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:54.989" endtime="20231206 19:15:55.194"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:55.198" level="INFO">Typing text 'Gudeman' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:55.196" endtime="20231206 19:15:55.338"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:55.339" level="INFO">Typing text '24287' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:55.338" endtime="20231206 19:15:55.480"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:55.482" level="INFO">Selecting options from selection list 'salestarget' by value 45000.</msg>
+<status status="PASS" starttime="20231206 19:15:55.480" endtime="20231206 19:15:55.576"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:55.579" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:55.577" endtime="20231206 19:15:55.753"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:54.988" endtime="20231206 19:15:55.754"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:54.987" endtime="20231206 19:15:55.754"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Bliss', 'Last Name': 'Burgess', 'Sales': 138542, 'Sales Target': 35000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:55.761" level="INFO">Typing text 'Bliss' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:55.758" endtime="20231206 19:15:55.972"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:55.975" level="INFO">Typing text 'Burgess' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:55.973" endtime="20231206 19:15:56.117"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:56.119" level="INFO">Typing text '138542' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:56.117" endtime="20231206 19:15:56.263"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:56.265" level="INFO">Selecting options from selection list 'salestarget' by value 35000.</msg>
+<status status="PASS" starttime="20231206 19:15:56.264" endtime="20231206 19:15:56.371"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:56.373" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:56.371" endtime="20231206 19:15:56.551"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:55.756" endtime="20231206 19:15:56.552"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:55.755" endtime="20231206 19:15:56.552"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Donia', 'Last Name': 'Messenbird', 'Sales': 52436, 'Sales Target': 75000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:56.557" level="INFO">Typing text 'Donia' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:56.555" endtime="20231206 19:15:56.766"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:56.770" level="INFO">Typing text 'Messenbird' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:56.767" endtime="20231206 19:15:56.932"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:56.935" level="INFO">Typing text '52436' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:56.933" endtime="20231206 19:15:57.076"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:57.080" level="INFO">Selecting options from selection list 'salestarget' by value 75000.</msg>
+<status status="PASS" starttime="20231206 19:15:57.077" endtime="20231206 19:15:57.179"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:57.181" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:57.180" endtime="20231206 19:15:57.403"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:56.553" endtime="20231206 19:15:57.404"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:56.552" endtime="20231206 19:15:57.404"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Jemie', 'Last Name': 'Tunnacliffe', 'Sales': 64130, 'Sales Target': 50000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:57.411" level="INFO">Typing text 'Jemie' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:57.407" endtime="20231206 19:15:57.625"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:57.628" level="INFO">Typing text 'Tunnacliffe' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:57.625" endtime="20231206 19:15:57.783"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:57.785" level="INFO">Typing text '64130' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:57.784" endtime="20231206 19:15:57.929"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:57.931" level="INFO">Selecting options from selection list 'salestarget' by value 50000.</msg>
+<status status="PASS" starttime="20231206 19:15:57.930" endtime="20231206 19:15:58.035"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:58.038" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:58.036" endtime="20231206 19:15:58.221"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:57.406" endtime="20231206 19:15:58.222"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:57.405" endtime="20231206 19:15:58.222"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Gaylord', 'Last Name': 'Uebel', 'Sales': 27872, 'Sales Target': 90000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:58.230" level="INFO">Typing text 'Gaylord' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:58.226" endtime="20231206 19:15:58.441"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:58.445" level="INFO">Typing text 'Uebel' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:58.442" endtime="20231206 19:15:58.581"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:58.583" level="INFO">Typing text '27872' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:58.581" endtime="20231206 19:15:58.727"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:58.730" level="INFO">Selecting options from selection list 'salestarget' by value 90000.</msg>
+<status status="PASS" starttime="20231206 19:15:58.728" endtime="20231206 19:15:58.836"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:58.838" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:58.837" endtime="20231206 19:15:59.021"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:58.225" endtime="20231206 19:15:59.022"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:58.223" endtime="20231206 19:15:59.022"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Rufus', 'Last Name': 'Bewlie', 'Sales': 119258, 'Sales Target': 85000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:59.028" level="INFO">Typing text 'Rufus' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:59.025" endtime="20231206 19:15:59.239"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:59.242" level="INFO">Typing text 'Bewlie' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:15:59.239" endtime="20231206 19:15:59.392"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:59.394" level="INFO">Typing text '119258' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:15:59.392" endtime="20231206 19:15:59.542"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:15:59.543" level="INFO">Selecting options from selection list 'salestarget' by value 85000.</msg>
+<status status="PASS" starttime="20231206 19:15:59.542" endtime="20231206 19:15:59.639"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:59.641" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:15:59.641" endtime="20231206 19:15:59.848"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:59.024" endtime="20231206 19:15:59.848"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:59.023" endtime="20231206 19:15:59.849"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Jenine', 'Last Name': 'Kidby', 'Sales': 133576, 'Sales Target': 60000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:15:59.854" level="INFO">Typing text 'Jenine' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:15:59.852" endtime="20231206 19:16:00.075"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:16:00.080" level="INFO">Typing text 'Kidby' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:16:00.076" endtime="20231206 19:16:00.222"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:16:00.224" level="INFO">Typing text '133576' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:16:00.222" endtime="20231206 19:16:00.368"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:16:00.370" level="INFO">Selecting options from selection list 'salestarget' by value 60000.</msg>
+<status status="PASS" starttime="20231206 19:16:00.368" endtime="20231206 19:16:00.468"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:16:00.470" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:16:00.469" endtime="20231206 19:16:00.654"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:59.851" endtime="20231206 19:16:00.655"/>
+</kw>
+<status status="PASS" starttime="20231206 19:15:59.850" endtime="20231206 19:16:00.655"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Hortensia', 'Last Name': 'Leal', 'Sales': 29530, 'Sales Target': 70000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:16:00.662" level="INFO">Typing text 'Hortensia' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:16:00.659" endtime="20231206 19:16:00.933"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:16:00.935" level="INFO">Typing text 'Leal' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:16:00.934" endtime="20231206 19:16:01.073"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:16:01.076" level="INFO">Typing text '29530' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:16:01.074" endtime="20231206 19:16:01.233"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:16:01.234" level="INFO">Selecting options from selection list 'salestarget' by value 70000.</msg>
+<status status="PASS" starttime="20231206 19:16:01.233" endtime="20231206 19:16:01.331"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:16:01.333" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:16:01.332" endtime="20231206 19:16:01.660"/>
+</kw>
+<status status="PASS" starttime="20231206 19:16:00.657" endtime="20231206 19:16:01.662"/>
+</kw>
+<status status="PASS" starttime="20231206 19:16:00.656" endtime="20231206 19:16:01.664"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Regina', 'Last Name': 'Gurling', 'Sales': 86186, 'Sales Target': 15000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:16:01.672" level="INFO">Typing text 'Regina' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:16:01.668" endtime="20231206 19:16:01.868"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:16:01.871" level="INFO">Typing text 'Gurling' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:16:01.870" endtime="20231206 19:16:02.011"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:16:02.014" level="INFO">Typing text '86186' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:16:02.012" endtime="20231206 19:16:02.189"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:16:02.192" level="INFO">Selecting options from selection list 'salestarget' by value 15000.</msg>
+<status status="PASS" starttime="20231206 19:16:02.190" endtime="20231206 19:16:02.284"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:16:02.286" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:16:02.285" endtime="20231206 19:16:02.477"/>
+</kw>
+<status status="PASS" starttime="20231206 19:16:01.666" endtime="20231206 19:16:02.478"/>
+</kw>
+<status status="PASS" starttime="20231206 19:16:01.665" endtime="20231206 19:16:02.480"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Valenka', 'Last Name': 'Tantrum', 'Sales': 137708, 'Sales Target': 65000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:16:02.492" level="INFO">Typing text 'Valenka' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:16:02.488" endtime="20231206 19:16:02.680"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:16:02.684" level="INFO">Typing text 'Tantrum' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:16:02.681" endtime="20231206 19:16:02.815"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:16:02.817" level="INFO">Typing text '137708' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:16:02.815" endtime="20231206 19:16:02.949"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:16:02.951" level="INFO">Selecting options from selection list 'salestarget' by value 65000.</msg>
+<status status="PASS" starttime="20231206 19:16:02.950" endtime="20231206 19:16:03.046"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:16:03.048" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:16:03.047" endtime="20231206 19:16:03.238"/>
+</kw>
+<status status="PASS" starttime="20231206 19:16:02.485" endtime="20231206 19:16:03.238"/>
+</kw>
+<status status="PASS" starttime="20231206 19:16:02.482" endtime="20231206 19:16:03.238"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Dorie', 'Last Name': 'Batistelli', 'Sales': 42450, 'Sales Target': 95000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:16:03.243" level="INFO">Typing text 'Dorie' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:16:03.240" endtime="20231206 19:16:03.454"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:16:03.455" level="INFO">Typing text 'Batistelli' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:16:03.454" endtime="20231206 19:16:03.607"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:16:03.609" level="INFO">Typing text '42450' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:16:03.607" endtime="20231206 19:16:03.738"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:16:03.739" level="INFO">Selecting options from selection list 'salestarget' by value 95000.</msg>
+<status status="PASS" starttime="20231206 19:16:03.738" endtime="20231206 19:16:03.836"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:16:03.838" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:16:03.837" endtime="20231206 19:16:04.048"/>
+</kw>
+<status status="PASS" starttime="20231206 19:16:03.239" endtime="20231206 19:16:04.049"/>
+</kw>
+<status status="PASS" starttime="20231206 19:16:03.239" endtime="20231206 19:16:04.050"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Abra', 'Last Name': 'Heap', 'Sales': 5937, 'Sales Target': 100000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:16:04.053" level="INFO">Typing text 'Abra' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:16:04.052" endtime="20231206 19:16:04.201"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:16:04.204" level="INFO">Typing text 'Heap' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:16:04.202" endtime="20231206 19:16:04.362"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:16:04.363" level="INFO">Typing text '5937' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:16:04.362" endtime="20231206 19:16:04.490"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:16:04.492" level="INFO">Selecting options from selection list 'salestarget' by value 100000.</msg>
+<status status="PASS" starttime="20231206 19:16:04.491" endtime="20231206 19:16:04.582"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:16:04.583" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:16:04.582" endtime="20231206 19:16:04.755"/>
+</kw>
+<status status="PASS" starttime="20231206 19:16:04.051" endtime="20231206 19:16:04.756"/>
+</kw>
+<status status="PASS" starttime="20231206 19:16:04.050" endtime="20231206 19:16:04.756"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Petronille', 'Last Name': 'Lesor', 'Sales': 54805, 'Sales Target': 85000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:16:04.763" level="INFO">Typing text 'Petronille' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:16:04.760" endtime="20231206 19:16:04.966"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:16:04.968" level="INFO">Typing text 'Lesor' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:16:04.967" endtime="20231206 19:16:05.095"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:16:05.097" level="INFO">Typing text '54805' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:16:05.096" endtime="20231206 19:16:05.220"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:16:05.221" level="INFO">Selecting options from selection list 'salestarget' by value 85000.</msg>
+<status status="PASS" starttime="20231206 19:16:05.221" endtime="20231206 19:16:05.319"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:16:05.320" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:16:05.319" endtime="20231206 19:16:05.483"/>
+</kw>
+<status status="PASS" starttime="20231206 19:16:04.758" endtime="20231206 19:16:05.484"/>
+</kw>
+<status status="PASS" starttime="20231206 19:16:04.758" endtime="20231206 19:16:05.484"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Vincenty', 'Last Name': 'Stannering', 'Sales': 109884, 'Sales Target': 30000}</var>
+<kw name="Fill and submit the form for one person">
+<arg>${sales_rep}</arg>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:16:05.489" level="INFO">Typing text 'Vincenty' into text field 'firstname'.</msg>
+<status status="PASS" starttime="20231206 19:16:05.487" endtime="20231206 19:16:05.669"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:16:05.672" level="INFO">Typing text 'Stannering' into text field 'lastname'.</msg>
+<status status="PASS" starttime="20231206 19:16:05.669" endtime="20231206 19:16:05.815"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 19:16:05.817" level="INFO">Typing text '109884' into text field 'salesresult'.</msg>
+<status status="PASS" starttime="20231206 19:16:05.816" endtime="20231206 19:16:05.952"/>
+</kw>
+<kw name="Select From List By Value" library="RPA.Browser.Selenium">
+<arg>salestarget</arg>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231206 19:16:05.953" level="INFO">Selecting options from selection list 'salestarget' by value 30000.</msg>
+<status status="PASS" starttime="20231206 19:16:05.952" endtime="20231206 19:16:06.047"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:16:06.048" level="INFO">Clicking button 'Submit'.</msg>
+<status status="PASS" starttime="20231206 19:16:06.047" endtime="20231206 19:16:06.224"/>
+</kw>
+<status status="PASS" starttime="20231206 19:16:05.486" endtime="20231206 19:16:06.226"/>
+</kw>
+<status status="PASS" starttime="20231206 19:16:05.485" endtime="20231206 19:16:06.228"/>
+</iter>
+<status status="PASS" starttime="20231206 19:15:22.850" endtime="20231206 19:16:06.230"/>
+</for>
+<status status="PASS" starttime="20231206 19:15:22.705" endtime="20231206 19:16:06.232"/>
+</kw>
+<kw name="Collect the results">
+<kw name="Screenshot" library="RPA.Browser.Selenium">
+<arg>css:div.sales-summary</arg>
+<arg>${OUTPUT_DIR}${/}sales_summary.png</arg>
+<doc>Capture page and/or element screenshot.</doc>
+<msg timestamp="20231206 19:16:06.443" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;img alt="screenshot" class="robot-seleniumlibrary-screenshot" src="data:image/png;base64,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" width="400px"&gt;</msg>
+<msg timestamp="20231206 19:16:06.451" level="INFO">Screenshot saved to file: C:\Robocorp\my-rsb-robot\sales_summary.png</msg>
+<status status="PASS" starttime="20231206 19:16:06.238" endtime="20231206 19:16:06.452"/>
+</kw>
+<status status="PASS" starttime="20231206 19:16:06.235" endtime="20231206 19:16:06.453"/>
+</kw>
+<kw name="Export the table as a PDF">
+<kw name="Wait Until Element Is Visible" library="RPA.Browser.Selenium">
+<arg>id:sales-results</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20231206 19:16:06.456" endtime="20231206 19:16:06.495"/>
+</kw>
+<kw name="Get Element Attribute" library="RPA.Browser.Selenium">
+<var>${sales_results_html}</var>
+<arg>id:sales-results</arg>
+<arg>outerHTML</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20231206 19:16:06.521" level="INFO">${sales_results_html} = &lt;div id="sales-results"&gt;&lt;table class="table table-dark table-striped"&gt;&lt;thead&gt;&lt;tr&gt;&lt;th width="24%" scope="col"&gt;Name&lt;/th&gt;&lt;th width="24%" scope="col"&gt;Target&lt;/th&gt;&lt;th width="24%" scope="col"&gt;Result&lt;/th&gt;&lt;th ...</msg>
+<status status="PASS" starttime="20231206 19:16:06.496" endtime="20231206 19:16:06.521"/>
+</kw>
+<kw name="Html To Pdf" library="RPA.PDF">
+<arg>${sales_results_html}</arg>
+<arg>${OUTPUT_DIR}${/}sales_results.pdf</arg>
+<doc>Generate a PDF file from HTML content.</doc>
+<msg timestamp="20231206 19:16:06.525" level="INFO">Writing output to file C:\Robocorp\my-rsb-robot\sales_results.pdf</msg>
+<msg timestamp="20231206 19:16:06.729" level="INFO">maxp pruned</msg>
+<msg timestamp="20231206 19:16:06.729" level="INFO">cmap pruned</msg>
+<msg timestamp="20231206 19:16:06.735" level="INFO">post pruned</msg>
+<msg timestamp="20231206 19:16:06.741" level="INFO">GDEF dropped</msg>
+<msg timestamp="20231206 19:16:06.741" level="INFO">GPOS dropped</msg>
+<msg timestamp="20231206 19:16:06.741" level="INFO">GSUB dropped</msg>
+<msg timestamp="20231206 19:16:06.770" level="INFO">glyf pruned</msg>
+<msg timestamp="20231206 19:16:06.770" level="INFO">Added gid0 to subset</msg>
+<msg timestamp="20231206 19:16:06.770" level="INFO">Added first four glyphs to subset</msg>
+<msg timestamp="20231206 19:16:06.770" level="INFO">Closing glyph list over 'glyf': 66 glyphs before</msg>
+<msg timestamp="20231206 19:16:06.772" level="INFO">Glyph names: ['.notdef', '.null', 'uni0020', 'uni0024', 'uni0027', 'uni002C', 'uni002D', 'uni0030', 'uni0031', 'uni0032', 'uni0033', 'uni0034', 'uni0035', 'uni0036', 'uni0037', 'uni0038', 'uni0039', 'uni0041', 'uni0042', 'uni0043', 'uni0044', 'uni0045', 'uni0046', 'uni0047', 'uni0048', 'uni0049', 'uni004A', 'uni004B', 'uni004C', 'uni004D', 'uni004E', 'uni004F', 'uni0050', 'uni0052', 'uni0053', 'uni0054', 'uni0055', 'uni0056', 'uni0057', 'uni0059', 'uni0061', 'uni0062', 'uni0063', 'uni0064', 'uni0065', 'uni0066', 'uni0067', 'uni0068', 'uni0069', 'uni006B', 'uni006C', 'uni006D', 'uni006E', 'uni006F', 'uni0070', 'uni0072', 'uni0073', 'uni0074', 'uni0075', 'uni0076', 'uni0077', 'uni0079', 'uni007A', 'uni007B', 'uni007D', 'uni00C4']</msg>
+<msg timestamp="20231206 19:16:06.772" level="INFO">Glyph IDs:   [0, 1, 2, 3, 65, 73, 84, 95, 137, 141, 161, 197, 265, 270, 280, 291, 299, 320, 374, 382, 395, 409, 421, 453, 456, 469, 504, 575, 582, 594, 612, 645, 650, 660, 679, 715, 723, 752, 759, 775, 827, 837, 867, 884, 899, 932, 936, 950, 973, 1262, 1294, 1295, 1296, 1298, 1299, 1300, 1302, 1303, 1304, 1305, 1345, 1346, 1361, 1388, 1403, 1681]</msg>
+<msg timestamp="20231206 19:16:06.772" level="INFO">Closed glyph list over 'glyf': 66 glyphs after</msg>
+<msg timestamp="20231206 19:16:06.773" level="INFO">Glyph names: ['.notdef', '.null', 'uni0020', 'uni0024', 'uni0027', 'uni002C', 'uni002D', 'uni0030', 'uni0031', 'uni0032', 'uni0033', 'uni0034', 'uni0035', 'uni0036', 'uni0037', 'uni0038', 'uni0039', 'uni0041', 'uni0042', 'uni0043', 'uni0044', 'uni0045', 'uni0046', 'uni0047', 'uni0048', 'uni0049', 'uni004A', 'uni004B', 'uni004C', 'uni004D', 'uni004E', 'uni004F', 'uni0050', 'uni0052', 'uni0053', 'uni0054', 'uni0055', 'uni0056', 'uni0057', 'uni0059', 'uni0061', 'uni0062', 'uni0063', 'uni0064', 'uni0065', 'uni0066', 'uni0067', 'uni0068', 'uni0069', 'uni006B', 'uni006C', 'uni006D', 'uni006E', 'uni006F', 'uni0070', 'uni0072', 'uni0073', 'uni0074', 'uni0075', 'uni0076', 'uni0077', 'uni0079', 'uni007A', 'uni007B', 'uni007D', 'uni00C4']</msg>
+<msg timestamp="20231206 19:16:06.773" level="INFO">Glyph IDs:   [0, 1, 2, 3, 65, 73, 84, 95, 137, 141, 161, 197, 265, 270, 280, 291, 299, 320, 374, 382, 395, 409, 421, 453, 456, 469, 504, 575, 582, 594, 612, 645, 650, 660, 679, 715, 723, 752, 759, 775, 827, 837, 867, 884, 899, 932, 936, 950, 973, 1262, 1294, 1295, 1296, 1298, 1299, 1300, 1302, 1303, 1304, 1305, 1345, 1346, 1361, 1388, 1403, 1681]</msg>
+<msg timestamp="20231206 19:16:06.774" level="INFO">Retaining 66 glyphs</msg>
+<msg timestamp="20231206 19:16:06.775" level="INFO">head subsetting not needed</msg>
+<msg timestamp="20231206 19:16:06.775" level="INFO">hhea subsetting not needed</msg>
+<msg timestamp="20231206 19:16:06.780" level="INFO">maxp subsetting not needed</msg>
+<msg timestamp="20231206 19:16:06.781" level="INFO">OS/2 subsetting not needed</msg>
+<msg timestamp="20231206 19:16:06.781" level="INFO">hmtx subsetted</msg>
+<msg timestamp="20231206 19:16:06.784" level="INFO">cmap subsetted</msg>
+<msg timestamp="20231206 19:16:06.785" level="INFO">prep subsetting not needed</msg>
+<msg timestamp="20231206 19:16:06.785" level="INFO">loca subsetting not needed</msg>
+<msg timestamp="20231206 19:16:06.786" level="INFO">post subsetted</msg>
+<msg timestamp="20231206 19:16:06.786" level="INFO">gasp subsetting not needed</msg>
+<msg timestamp="20231206 19:16:06.787" level="INFO">STAT subsetting not needed</msg>
+<msg timestamp="20231206 19:16:06.787" level="INFO">name subsetting not needed</msg>
+<msg timestamp="20231206 19:16:06.789" level="INFO">glyf subsetted</msg>
+<msg timestamp="20231206 19:16:06.789" level="INFO">head pruned</msg>
+<msg timestamp="20231206 19:16:06.790" level="INFO">OS/2 Unicode ranges pruned: [0]</msg>
+<msg timestamp="20231206 19:16:06.791" level="INFO">OS/2 CodePage ranges pruned: [0]</msg>
+<msg timestamp="20231206 19:16:06.793" level="INFO">glyf pruned</msg>
+<msg timestamp="20231206 19:16:06.797" level="INFO">name pruned</msg>
+<msg timestamp="20231206 19:16:06.818" level="INFO">maxp pruned</msg>
+<msg timestamp="20231206 19:16:06.818" level="INFO">cmap pruned</msg>
+<msg timestamp="20231206 19:16:06.819" level="INFO">post pruned</msg>
+<msg timestamp="20231206 19:16:06.819" level="INFO">GDEF dropped</msg>
+<msg timestamp="20231206 19:16:06.820" level="INFO">GPOS dropped</msg>
+<msg timestamp="20231206 19:16:06.820" level="INFO">GSUB dropped</msg>
+<msg timestamp="20231206 19:16:06.827" level="INFO">glyf pruned</msg>
+<msg timestamp="20231206 19:16:06.828" level="INFO">Added gid0 to subset</msg>
+<msg timestamp="20231206 19:16:06.828" level="INFO">Added first four glyphs to subset</msg>
+<msg timestamp="20231206 19:16:06.828" level="INFO">Closing glyph list over 'glyf': 35 glyphs before</msg>
+<msg timestamp="20231206 19:16:06.828" level="INFO">Glyph names: ['.notdef', '.null', 'uni0020', 'uni0030', 'uni0031', 'uni0032', 'uni0033', 'uni0034', 'uni0035', 'uni0036', 'uni0037', 'uni0038', 'uni0039', 'uni0041', 'uni0044', 'uni004E', 'uni0052', 'uni0054', 'uni0061', 'uni0062', 'uni0063', 'uni0065', 'uni0066', 'uni0067', 'uni0069', 'uni006C', 'uni006D', 'uni006E', 'uni0072', 'uni0073', 'uni0074', 'uni0075', 'uni007B', 'uni007D', 'uni00C4']</msg>
+<msg timestamp="20231206 19:16:06.828" level="INFO">Glyph IDs:   [0, 1, 2, 3, 84, 299, 382, 409, 504, 575, 582, 612, 645, 650, 679, 723, 752, 759, 837, 867, 884, 899, 1294, 1295, 1296, 1298, 1299, 1300, 1302, 1303, 1304, 1305, 1345, 1346, 1681]</msg>
+<msg timestamp="20231206 19:16:06.828" level="INFO">Closed glyph list over 'glyf': 35 glyphs after</msg>
+<msg timestamp="20231206 19:16:06.828" level="INFO">Glyph names: ['.notdef', '.null', 'uni0020', 'uni0030', 'uni0031', 'uni0032', 'uni0033', 'uni0034', 'uni0035', 'uni0036', 'uni0037', 'uni0038', 'uni0039', 'uni0041', 'uni0044', 'uni004E', 'uni0052', 'uni0054', 'uni0061', 'uni0062', 'uni0063', 'uni0065', 'uni0066', 'uni0067', 'uni0069', 'uni006C', 'uni006D', 'uni006E', 'uni0072', 'uni0073', 'uni0074', 'uni0075', 'uni007B', 'uni007D', 'uni00C4']</msg>
+<msg timestamp="20231206 19:16:06.828" level="INFO">Glyph IDs:   [0, 1, 2, 3, 84, 299, 382, 409, 504, 575, 582, 612, 645, 650, 679, 723, 752, 759, 837, 867, 884, 899, 1294, 1295, 1296, 1298, 1299, 1300, 1302, 1303, 1304, 1305, 1345, 1346, 1681]</msg>
+<msg timestamp="20231206 19:16:06.828" level="INFO">Retaining 35 glyphs</msg>
+<msg timestamp="20231206 19:16:06.828" level="INFO">head subsetting not needed</msg>
+<msg timestamp="20231206 19:16:06.828" level="INFO">hhea subsetting not needed</msg>
+<msg timestamp="20231206 19:16:06.828" level="INFO">maxp subsetting not needed</msg>
+<msg timestamp="20231206 19:16:06.828" level="INFO">OS/2 subsetting not needed</msg>
+<msg timestamp="20231206 19:16:06.828" level="INFO">hmtx subsetted</msg>
+<msg timestamp="20231206 19:16:06.828" level="INFO">cmap subsetted</msg>
+<msg timestamp="20231206 19:16:06.828" level="INFO">prep subsetting not needed</msg>
+<msg timestamp="20231206 19:16:06.828" level="INFO">loca subsetting not needed</msg>
+<msg timestamp="20231206 19:16:06.828" level="INFO">post subsetted</msg>
+<msg timestamp="20231206 19:16:06.828" level="INFO">gasp subsetting not needed</msg>
+<msg timestamp="20231206 19:16:06.828" level="INFO">STAT subsetting not needed</msg>
+<msg timestamp="20231206 19:16:06.828" level="INFO">name subsetting not needed</msg>
+<msg timestamp="20231206 19:16:06.828" level="INFO">glyf subsetted</msg>
+<msg timestamp="20231206 19:16:06.828" level="INFO">head pruned</msg>
+<msg timestamp="20231206 19:16:06.828" level="INFO">OS/2 Unicode ranges pruned: [0]</msg>
+<msg timestamp="20231206 19:16:06.828" level="INFO">OS/2 CodePage ranges pruned: [0]</msg>
+<msg timestamp="20231206 19:16:06.828" level="INFO">glyf pruned</msg>
+<msg timestamp="20231206 19:16:06.842" level="INFO">name pruned</msg>
+<msg timestamp="20231206 19:16:06.858" level="INFO">maxp pruned</msg>
+<msg timestamp="20231206 19:16:06.858" level="INFO">cmap pruned</msg>
+<msg timestamp="20231206 19:16:06.859" level="INFO">post pruned</msg>
+<msg timestamp="20231206 19:16:06.859" level="INFO">GDEF dropped</msg>
+<msg timestamp="20231206 19:16:06.859" level="INFO">GPOS dropped</msg>
+<msg timestamp="20231206 19:16:06.860" level="INFO">GSUB dropped</msg>
+<msg timestamp="20231206 19:16:06.866" level="INFO">glyf pruned</msg>
+<msg timestamp="20231206 19:16:06.867" level="INFO">Added gid0 to subset</msg>
+<msg timestamp="20231206 19:16:06.867" level="INFO">Added first four glyphs to subset</msg>
+<msg timestamp="20231206 19:16:06.867" level="INFO">Closing glyph list over 'glyf': 18 glyphs before</msg>
+<msg timestamp="20231206 19:16:06.867" level="INFO">Glyph names: ['.notdef', '.null', 'uni0020', 'uni0030', 'uni0031', 'uni0032', 'uni0033', 'uni0034', 'uni0035', 'uni0036', 'uni0037', 'uni0038', 'uni0039', 'uni0062', 'uni006E', 'uni007B', 'uni007D', 'uni00A0']</msg>
+<msg timestamp="20231206 19:16:06.867" level="INFO">Glyph IDs:   [0, 1, 2, 3, 544, 727, 1256, 1257, 1258, 1260, 1261, 1262, 1264, 1265, 1266, 1267, 1307, 1308]</msg>
+<msg timestamp="20231206 19:16:06.867" level="INFO">Closed glyph list over 'glyf': 18 glyphs after</msg>
+<msg timestamp="20231206 19:16:06.867" level="INFO">Glyph names: ['.notdef', '.null', 'uni0020', 'uni0030', 'uni0031', 'uni0032', 'uni0033', 'uni0034', 'uni0035', 'uni0036', 'uni0037', 'uni0038', 'uni0039', 'uni0062', 'uni006E', 'uni007B', 'uni007D', 'uni00A0']</msg>
+<msg timestamp="20231206 19:16:06.867" level="INFO">Glyph IDs:   [0, 1, 2, 3, 544, 727, 1256, 1257, 1258, 1260, 1261, 1262, 1264, 1265, 1266, 1267, 1307, 1308]</msg>
+<msg timestamp="20231206 19:16:06.867" level="INFO">Retaining 18 glyphs</msg>
+<msg timestamp="20231206 19:16:06.867" level="INFO">head subsetting not needed</msg>
+<msg timestamp="20231206 19:16:06.867" level="INFO">hhea subsetting not needed</msg>
+<msg timestamp="20231206 19:16:06.867" level="INFO">maxp subsetting not needed</msg>
+<msg timestamp="20231206 19:16:06.867" level="INFO">OS/2 subsetting not needed</msg>
+<msg timestamp="20231206 19:16:06.874" level="INFO">hmtx subsetted</msg>
+<msg timestamp="20231206 19:16:06.876" level="INFO">cmap subsetted</msg>
+<msg timestamp="20231206 19:16:06.876" level="INFO">loca subsetting not needed</msg>
+<msg timestamp="20231206 19:16:06.876" level="INFO">post subsetted</msg>
+<msg timestamp="20231206 19:16:06.877" level="INFO">name subsetting not needed</msg>
+<msg timestamp="20231206 19:16:06.878" level="INFO">glyf subsetted</msg>
+<msg timestamp="20231206 19:16:06.878" level="INFO">head pruned</msg>
+<msg timestamp="20231206 19:16:06.878" level="INFO">OS/2 Unicode ranges pruned: [0]</msg>
+<msg timestamp="20231206 19:16:06.878" level="INFO">OS/2 CodePage ranges pruned: [0]</msg>
+<msg timestamp="20231206 19:16:06.878" level="INFO">glyf pruned</msg>
+<msg timestamp="20231206 19:16:06.878" level="INFO">name pruned</msg>
+<msg timestamp="20231206 19:16:06.890" level="INFO">maxp pruned</msg>
+<msg timestamp="20231206 19:16:06.891" level="INFO">cmap pruned</msg>
+<msg timestamp="20231206 19:16:06.891" level="INFO">post pruned</msg>
+<msg timestamp="20231206 19:16:06.891" level="INFO">GDEF dropped</msg>
+<msg timestamp="20231206 19:16:06.892" level="INFO">GPOS dropped</msg>
+<msg timestamp="20231206 19:16:06.892" level="INFO">GSUB dropped</msg>
+<msg timestamp="20231206 19:16:06.945" level="INFO">glyf pruned</msg>
+<msg timestamp="20231206 19:16:06.945" level="INFO">Added gid0 to subset</msg>
+<msg timestamp="20231206 19:16:06.945" level="INFO">Added first four glyphs to subset</msg>
+<msg timestamp="20231206 19:16:06.945" level="INFO">Closing glyph list over 'glyf': 18 glyphs before</msg>
+<msg timestamp="20231206 19:16:06.945" level="INFO">Glyph names: ['.notdef', '.null', 'uni0020', 'uni0030', 'uni0031', 'uni0032', 'uni0033', 'uni0034', 'uni0035', 'uni0036', 'uni0037', 'uni0038', 'uni0039', 'uni0062', 'uni006E', 'uni007B', 'uni007D', 'uni00A0']</msg>
+<msg timestamp="20231206 19:16:06.945" level="INFO">Glyph IDs:   [0, 1, 2, 3, 544, 727, 1256, 1257, 1258, 1260, 1261, 1262, 1264, 1265, 1266, 1267, 1307, 1308]</msg>
+<msg timestamp="20231206 19:16:06.945" level="INFO">Closed glyph list over 'glyf': 18 glyphs after</msg>
+<msg timestamp="20231206 19:16:06.945" level="INFO">Glyph names: ['.notdef', '.null', 'uni0020', 'uni0030', 'uni0031', 'uni0032', 'uni0033', 'uni0034', 'uni0035', 'uni0036', 'uni0037', 'uni0038', 'uni0039', 'uni0062', 'uni006E', 'uni007B', 'uni007D', 'uni00A0']</msg>
+<msg timestamp="20231206 19:16:06.945" level="INFO">Glyph IDs:   [0, 1, 2, 3, 544, 727, 1256, 1257, 1258, 1260, 1261, 1262, 1264, 1265, 1266, 1267, 1307, 1308]</msg>
+<msg timestamp="20231206 19:16:06.945" level="INFO">Retaining 18 glyphs</msg>
+<msg timestamp="20231206 19:16:06.945" level="INFO">head subsetting not needed</msg>
+<msg timestamp="20231206 19:16:06.945" level="INFO">hhea subsetting not needed</msg>
+<msg timestamp="20231206 19:16:06.945" level="INFO">maxp subsetting not needed</msg>
+<msg timestamp="20231206 19:16:06.945" level="INFO">OS/2 subsetting not needed</msg>
+<msg timestamp="20231206 19:16:06.945" level="INFO">hmtx subsetted</msg>
+<msg timestamp="20231206 19:16:06.945" level="INFO">cmap subsetted</msg>
+<msg timestamp="20231206 19:16:06.945" level="INFO">loca subsetting not needed</msg>
+<msg timestamp="20231206 19:16:06.945" level="INFO">post subsetted</msg>
+<msg timestamp="20231206 19:16:06.945" level="INFO">name subsetting not needed</msg>
+<msg timestamp="20231206 19:16:06.959" level="INFO">glyf subsetted</msg>
+<msg timestamp="20231206 19:16:06.959" level="INFO">head pruned</msg>
+<msg timestamp="20231206 19:16:06.960" level="INFO">OS/2 Unicode ranges pruned: [0]</msg>
+<msg timestamp="20231206 19:16:06.960" level="INFO">OS/2 CodePage ranges pruned: [0]</msg>
+<msg timestamp="20231206 19:16:06.961" level="INFO">glyf pruned</msg>
+<msg timestamp="20231206 19:16:06.962" level="INFO">name pruned</msg>
+<status status="PASS" starttime="20231206 19:16:06.522" endtime="20231206 19:16:06.977"/>
+</kw>
+<status status="PASS" starttime="20231206 19:16:06.455" endtime="20231206 19:16:06.978"/>
+</kw>
+<kw name="Log out and close the browser" type="TEARDOWN">
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>Log out</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 19:16:06.981" level="INFO">Clicking button 'Log out'.</msg>
+<status status="PASS" starttime="20231206 19:16:06.980" endtime="20231206 19:16:07.121"/>
+</kw>
+<kw name="Close Browser" library="RPA.Browser.Selenium">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20231206 19:16:07.123" endtime="20231206 19:16:11.301"/>
+</kw>
+<status status="PASS" starttime="20231206 19:16:06.979" endtime="20231206 19:16:11.302"/>
+</kw>
+<status status="PASS" starttime="20231206 19:14:36.551" endtime="20231206 19:16:11.302"/>
+</test>
+<doc>Insert the sales data for the week and export it as a PDF.</doc>
+<status status="PASS" starttime="20231206 19:14:29.476" endtime="20231206 19:16:11.305"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tasks</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Tasks">Tasks</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
